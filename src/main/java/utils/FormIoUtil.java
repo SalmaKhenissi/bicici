@@ -4,8 +4,11 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.List;
 
 public class FormIoUtil {
+
+    private final String INPUT = "input";
 
     public void setDateInput(WebElement element, String data) {
         WebElement inputElement = element.findElement(By.xpath("following-sibling::*"));
@@ -24,6 +27,18 @@ public class FormIoUtil {
 //        wait.until(ExpectedConditions.elementToBeClickable(optionElement));
 
         optionElement.click();
+    }
+
+    public void clickOnChoiceItem(WebDriver driver, By selector, String item, JavascriptExecutor jsDriver) throws InterruptedException {
+        WebElement element = driver.findElement(selector);
+        jsDriver.executeScript("arguments[0].click();",element.findElement(By.className("form-control")));
+//        element.findElement(By.className("form-control")).click();
+        Thread.sleep(6000);
+
+        WebElement optionElement = element.findElement(By.className("choices__list"))
+                .findElement(By.xpath("//*[@data-value = '"+item+"']"));
+
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", optionElement);
     }
 
     public void clickOnSelectOption(WebElement element, String option) {
@@ -50,5 +65,28 @@ public class FormIoUtil {
 
         Thread.sleep(2000);
         optionElement.click();
+    }
+
+    public void clickOnRadioButton(WebElement element, JavascriptExecutor jsDriver) {
+        jsDriver.executeScript("arguments[0].click();", element.findElement(By.tagName(INPUT)));
+    }
+
+    public void clickOnRadioButton(WebElement element, String choiceValue) {
+        List<WebElement> choices = element.findElements(By.tagName(INPUT));
+        for (WebElement choice : choices) {
+            if (choice.getAttribute("value").equals(choiceValue)) {
+//                choice.click();
+            }
+        }
+    }
+
+    public void clickOnRadioButton(WebElement element, String choiceValue, JavascriptExecutor jsDriver) {
+        List<WebElement> choices = element.findElements(By.tagName(INPUT));
+        for (WebElement choice : choices) {
+            if (choice.getAttribute("value").equals(choiceValue)) {
+                jsDriver.executeScript("arguments[0].click();", choice);
+//                choice.click();
+            }
+        }
     }
 }

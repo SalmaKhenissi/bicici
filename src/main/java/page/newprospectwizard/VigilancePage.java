@@ -1,41 +1,28 @@
-package page.addProspectWizard;
+package page.newprospectwizard;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import utils.FormIoUtil;
 
-public class VigilancePage  {
+public class VigilancePage extends BaseNewProspectWizard  {
 
-    private WebDriver driver;
-    private FormIoUtil formIoUtil;
-
-    private By vigilanceDate = By.xpath("//*[@name = 'data[date]']");
+    private By vigilanceDate = By.name("data[date]");
     private By presenceList = By.className("formio-component-presence_list");
-    private By vigilanceComment = By.xpath("//*[@name = 'data[Vigilance_commentaire]']");
+    private By vigilanceComment = By.name("data[Vigilance_commentaire]");
 
-    private By interrogationDate = By.xpath("//*[@name = 'data[date_interrogation_cip]']");
+    private By interrogationDate = By.name("data[date_interrogation_cip]");
     private By detectionCip = By.className("formio-component-detection_cip");
-    private By incidentCenterComment = By.xpath("//*[@name = 'data[centrale_commentaire]']");
-
-    private By nextButton = By.className("btn-wizard-nav-next");
+    private By incidentCenterComment = By.name("data[centrale_commentaire]");
 
     public VigilancePage(WebDriver driver) {
-        this.driver = driver;
-        this.formIoUtil = new FormIoUtil();
+        super(driver);
     }
 
     public IdentificationPage saveVigilance() throws InterruptedException {
-
-        Thread.sleep(10000);
+        Thread.sleep(20000);
 
         this.setVigilance();
         this.setCentralIncident();
-
-        JavascriptExecutor jsDriver = (JavascriptExecutor) driver;
-        WebElement nextButtonElement = driver.findElement(nextButton);
-        jsDriver.executeScript("arguments[0].click();", nextButtonElement);
+        this.jsDriver.executeScript("arguments[0].click();", driver.findElement(this.nextButton));
 
         return new IdentificationPage(driver);
     }

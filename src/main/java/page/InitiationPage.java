@@ -1,14 +1,11 @@
 package page;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import page.addProspectWizard.VigilancePage;
+import utils.FormIoUtil;
+import page.newprospectwizard.VigilancePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.FormIoUtil;
-
 import java.time.Duration;
 
 public class InitiationPage {
@@ -16,13 +13,11 @@ public class InitiationPage {
     private WebDriver driver;
     private FormIoUtil formIoUtil;
 
-//    private By initiationButton = By.name("data[submit1]");
-    private By initiationButton = By.xpath("/html[1]/body[1]/div[1]/div[3]/div[1]/form[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]/div[2]/button[1]");
-
-    private By officeCode = By.className("test-officeCode");
-    private By operatorCode = By.className("test-operatorCode");
-    private By identityOption = By.className("test-option");
-    private By identityInput = By.xpath("//*[@name = 'data[numeroDeCni_input]']");
+    private By officeCode = By.className("formio-component-user_identity_branch");
+    private By operatorCode = By.className("formio-component-code_exploitant");
+    private By identityOption = By.className("formio-component-dropDownOnHold");
+    private By identityInput = By.name("data[numeroDeCni]");
+    private By initiationButton = By.name("data[submit1]");
 
     public InitiationPage(WebDriver driver) {
         this.driver = driver;
