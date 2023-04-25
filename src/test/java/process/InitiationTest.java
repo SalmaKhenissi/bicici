@@ -1,5 +1,6 @@
 package process;
 
+import dataprovider.InitiationDataProvider;
 import page.InitiationPage;
 import page.LoginPage;
 import page.ProspectListPage;
@@ -13,6 +14,17 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 
 public class InitiationTest extends BaseTest {
+
+    @Test(dataProviderClass = InitiationDataProvider.class, dataProvider = "initiation-provider")
+    public void testInitiationProspect(String[] loginData) throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+
+        ProspectListPage prospectListPage = loginPage.clickToLogin(loginData[0], loginData[1]);
+        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("topbar-menu-button")));
+
+        InitiationPage initiationPage = prospectListPage.clickToStartProcess();
+    }
 
     @Test
     public void testInitiation() throws InterruptedException {

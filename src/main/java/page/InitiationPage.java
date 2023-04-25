@@ -1,5 +1,6 @@
 package page;
 
+import org.openqa.selenium.JavascriptExecutor;
 import utils.FormIoUtil;
 import page.newprospectwizard.VigilancePage;
 import org.openqa.selenium.By;
@@ -11,6 +12,7 @@ import java.time.Duration;
 public class InitiationPage {
 
     private WebDriver driver;
+    private JavascriptExecutor jsDriver;
     private FormIoUtil formIoUtil;
 
     private By officeCode = By.className("formio-component-user_identity_branch");
@@ -22,14 +24,15 @@ public class InitiationPage {
     public InitiationPage(WebDriver driver) {
         this.driver = driver;
         this.formIoUtil = new FormIoUtil();
+        this.jsDriver = (JavascriptExecutor) driver;
     }
 
     public VigilancePage clickToInitiateProspect() throws InterruptedException {
         Thread.sleep(5000);
 
-        this.formIoUtil.clickOnChoiceItem(this.driver, officeCode, "06393");
-        this.formIoUtil.clickOnChoiceItem(this.driver, operatorCode, "CA59");
-        this.formIoUtil.clickOnChoiceItem(this.driver, identityOption, "numeroDeCni");
+        this.formIoUtil.clickOnChoiceOption(this.driver.findElement(officeCode), "06393");
+        this.formIoUtil.clickOnChoiceOption(this.driver.findElement(operatorCode), "CA59");
+        this.formIoUtil.searchAndSelect(this.driver.findElement(identityOption), "Numero de CNI");
         this.driver.findElement(identityInput).sendKeys("123456789");
 
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));

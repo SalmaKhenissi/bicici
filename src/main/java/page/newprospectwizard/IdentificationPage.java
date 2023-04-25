@@ -56,12 +56,15 @@ public class IdentificationPage extends BaseNewProspectWizard {
         this.setCivilStatus();
         this.jsDriver.executeScript("window.scrollBy(0,350)", "");
         this.setOriginInfo();
+        this.jsDriver.executeScript("window.scrollBy(0,350)", "");
         this.setBirthInfo();
         this.jsDriver.executeScript("window.scrollBy(0,350)", "");
         this.setFamilyStatus();
+        this.jsDriver.executeScript("window.scrollBy(0,350)", "");
         this.setInChargeInfo();
         this.jsDriver.executeScript("window.scrollBy(0,350)", "");
         this.setLegalCapacity();
+        this.jsDriver.executeScript("window.scrollBy(0,350)", "");
         this.setCreditInfo();
         this.jsDriver.executeScript("arguments[0].click();", driver.findElement(this.nextButton));
 
@@ -74,17 +77,17 @@ public class IdentificationPage extends BaseNewProspectWizard {
 
     private void setCivilStatus() throws InterruptedException  {
         this.formIoUtil.clickOnChoiceItem(driver, civility, "monsieur");
-        this.formIoUtil.clickOnChoiceItem(driver, nationalityCountry, "AE", this.jsDriver);
+        this.formIoUtil.searchAndSelect(driver.findElement(nationalityCountry), "Tunisie");
         this.formIoUtil.clickOnChoiceItem(driver, gender, "MALE");
-        this.formIoUtil.clickOnChoiceItem(driver, doubleNationalityCountry, "AD", this.jsDriver);
+        this.formIoUtil.searchAndSelect(driver.findElement(doubleNationalityCountry), "BRESIL");
         driver.findElement(lastName).sendKeys("lastname");
         driver.findElement(firstName).sendKeys("firstName");
-        this.formIoUtil.clickOnChoiceItem(driver, matriculationCountry, "AF", this.jsDriver);
+        this.formIoUtil.searchAndSelect(driver.findElement(matriculationCountry), "Tunisie");
         this.formIoUtil.clickOnRadioButton(driver.findElement(isResident), "false" , this.jsDriver);
     }
 
     private void setOriginInfo() throws InterruptedException {
-        this.formIoUtil.clickOnChoiceItem(driver, KYCCountry, "AF", this.jsDriver);
+        this.formIoUtil.searchAndSelect(driver.findElement(KYCCountry), "Tunisie");
         this.formIoUtil.clickOnChoiceItem(driver, EERMotif, "SPONTANEE");
         this.formIoUtil.clickOnChoiceItem(driver, EERMode, "AGENCE");
     }
@@ -93,7 +96,7 @@ public class IdentificationPage extends BaseNewProspectWizard {
 //        this.formIoUtil.setDateInput(driver.findElement(birthdate),"28/03/2023");
         driver.findElement(motherName).sendKeys("mère");
         driver.findElement(birthPlace).sendKeys("birthplace");
-        this.formIoUtil.clickOnChoiceItem(driver, birthCountry, "AF", this.jsDriver);
+        this.formIoUtil.searchAndSelect(driver.findElement(birthCountry), "Tunisie");
     }
 
     private void setFamilyStatus() throws InterruptedException {
