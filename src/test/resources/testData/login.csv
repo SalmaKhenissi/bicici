@@ -1,0 +1,4 @@
+test case id;test case description;username;password
+BCC-78;login;bkdev;Pr0xym-1T
+BCC-80;login;invalidUsername;Pr0xym-1T
+BCC-81;login;bkdev;invalidPw

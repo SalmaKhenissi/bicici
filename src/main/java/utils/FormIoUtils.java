@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class FormIoUtil {
+public class FormIoUtils {
 
     private final String INPUT = "input";
 
@@ -67,8 +67,8 @@ public class FormIoUtil {
         element.findElement(By.tagName("input")).sendKeys(value);
         Thread.sleep(1000);
 
-//        element.findElement(By.xpath("div[1]/div[2]/div[1]/div[1]")).click();
-        element.findElement(By.xpath("//div[@role = 'listbox']//div[1])")).click();
+        element.findElement(By.xpath("div[1]/div[2]/div[1]/div[1]")).click();
+//        element.findElement(By.xpath("//div[@role = 'listbox']//div[1])")).click();
         Thread.sleep(1000);
     }
 

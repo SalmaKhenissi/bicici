@@ -16,13 +16,13 @@ public class FlowsPage extends BaseNewProspectWizard {
     }
 
     public ForeignAccountPage saveAnnualRevenuesOrigin() throws InterruptedException {
-        driver.findElement(revenuesYear).sendKeys("2020");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(revenuesSources), "pension_retraite");
-        driver.findElement(revenuesOrigins).sendKeys("test origin");
-        driver.findElement(annualRevenues).sendKeys("1000");
-        this.formIoUtil.clickOnChoiceItem(driver, revenuesCurrency, "ARGENT");
-        this.jsDriver.executeScript("arguments[0].click();", driver.findElement(this.nextButton));
+        this.getDriver().findElement(revenuesYear).sendKeys("2020");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(revenuesSources), "pension_retraite");
+        this.getDriver().findElement(revenuesOrigins).sendKeys("test origin");
+        this.getDriver().findElement(annualRevenues).sendKeys("1000");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), revenuesCurrency, "ARGENT");
+        this.jsDriver.executeScript("arguments[0].click();", this.getDriver().findElement(this.nextButton));
 
-        return new ForeignAccountPage(driver);
+        return new ForeignAccountPage(this.getDriver());
     }
 }

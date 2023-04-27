@@ -19,7 +19,7 @@ public class BaseTest {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
     }
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp(){
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -34,13 +34,13 @@ public class BaseTest {
 //        loginPage.clickToLogin(username, password);
 //    }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
-//        driver.quit();
+        driver.quit();
     }
 
     @AfterSuite
     public void ClearBrowserCache() {
-        driver.manage().deleteAllCookies();
+//        driver.manage().deleteAllCookies();
     }
 }

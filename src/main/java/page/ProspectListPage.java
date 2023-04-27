@@ -2,19 +2,24 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class ProspectListPage {
+public class ProspectListPage extends AbstractPage {
 
-    private WebDriver driver;
+    private By menuButton = By.id("topbar-menu-button");
     private By startIcon = By.className("icon-plus-square");
 
     public ProspectListPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public InitiationPage clickToStartProcess() {
-        driver.findElement(startIcon).findElement(By.xpath("parent::*")).click();
+        this.getDriver().findElement(startIcon).findElement(By.xpath("parent::*")).click();
 
-        return new InitiationPage(driver);
+        return new InitiationPage(this.getDriver());
+    }
+
+    public void waitToLoggIn() {
+        this.getWait().until(ExpectedConditions.visibilityOfElementLocated(menuButton));
     }
 }

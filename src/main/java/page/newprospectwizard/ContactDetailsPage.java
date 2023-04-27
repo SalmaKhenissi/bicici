@@ -55,52 +55,52 @@ public class ContactDetailsPage extends BaseNewProspectWizard {
         this.jsDriver.executeScript("window.scrollBy(0,350)", "");
         this.setPhones();
         this.setEmail();
-        this.jsDriver.executeScript("arguments[0].click();", driver.findElement(this.nextButton));
+        this.jsDriver.executeScript("arguments[0].click();", this.getDriver().findElement(this.nextButton));
 
-        return new ActivityPage(driver);
+        return new ActivityPage(this.getDriver());
     }
 
     private void setFiscalAddress() throws InterruptedException {
-        driver.findElement(fiscalLine1).sendKeys("test fiscal line1");
-        driver.findElement(fiscalLine2).sendKeys("test fiscal line2");
-        driver.findElement(fiscalLine3).sendKeys("test fiscal line3");
-        driver.findElement(fiscalLine4).sendKeys("test fiscal line4");
-        driver.findElement(fiscalPostalCode).sendKeys("1234");
-        driver.findElement(fiscalLocality).sendKeys("test");
-        this.formIoUtil.clickOnChoiceItem(driver, postCountry, "AD", this.jsDriver);
-        this.formIoUtil.clickOnChoiceItem(driver, fiscalAccommodation, "locataire");
+        this.getDriver().findElement(fiscalLine1).sendKeys("test fiscal line1");
+        this.getDriver().findElement(fiscalLine2).sendKeys("test fiscal line2");
+        this.getDriver().findElement(fiscalLine3).sendKeys("test fiscal line3");
+        this.getDriver().findElement(fiscalLine4).sendKeys("test fiscal line4");
+        this.getDriver().findElement(fiscalPostalCode).sendKeys("1234");
+        this.getDriver().findElement(fiscalLocality).sendKeys("test");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), postCountry, "AD", this.jsDriver);
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), fiscalAccommodation, "locataire");
     }
 
     private void setPostAddress() throws InterruptedException {
-        driver.findElement(postLine1).sendKeys("test line1");
-        driver.findElement(postLine2).sendKeys("test line2");
-//        driver.findElement(postLine3).sendKeys("test line3");
-        driver.findElement(postLine4).sendKeys("test line4");
-        driver.findElement(postPostalCode).sendKeys("1234");
-        driver.findElement(postLocality).sendKeys("test");
-//        this.formIoUtil.clickOnChoiceItem(driver, fiscalCountry, "AD", this.jsDriver);
-        driver.findElement(postBox).sendKeys("123");
+        this.getDriver().findElement(postLine1).sendKeys("test line1");
+        this.getDriver().findElement(postLine2).sendKeys("test line2");
+//        this.getDriver().findElement(postLine3).sendKeys("test line3");
+        this.getDriver().findElement(postLine4).sendKeys("test line4");
+        this.getDriver().findElement(postPostalCode).sendKeys("1234");
+        this.getDriver().findElement(postLocality).sendKeys("test");
+//        this.formIoUtil.clickOnChoiceItem(this.getDriver(), fiscalCountry, "AD", this.jsDriver);
+        this.getDriver().findElement(postBox).sendKeys("123");
     }
 
     private void setPhones() {
-        driver.findElement(homePhone1).sendKeys("1234");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(isHome1Privileged), this.jsDriver);
-        driver.findElement(homePhone2).sendKeys("1234");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(isHome2Privileged), this.jsDriver);
-        driver.findElement(mobilePhone1).sendKeys("1234");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(isMobile1Privileged), this.jsDriver);
-        driver.findElement(mobilePhone2).sendKeys("1234");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(isMobile2Privileged), this.jsDriver);
-        driver.findElement(proPhone1).sendKeys("1234");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(isPro1Privileged), this.jsDriver);
-        driver.findElement(proPhone2).sendKeys("1234");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(isPro2Privileged), this.jsDriver);
+        this.getDriver().findElement(homePhone1).sendKeys("1234");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(isHome1Privileged), this.jsDriver);
+        this.getDriver().findElement(homePhone2).sendKeys("1234");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(isHome2Privileged), this.jsDriver);
+        this.getDriver().findElement(mobilePhone1).sendKeys("1234");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(isMobile1Privileged), this.jsDriver);
+        this.getDriver().findElement(mobilePhone2).sendKeys("1234");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(isMobile2Privileged), this.jsDriver);
+        this.getDriver().findElement(proPhone1).sendKeys("1234");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(isPro1Privileged), this.jsDriver);
+        this.getDriver().findElement(proPhone2).sendKeys("1234");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(isPro2Privileged), this.jsDriver);
     }
 
     private void setEmail() {
-        driver.findElement(mailPart1).sendKeys("part1");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(ismail1Privileged), this.jsDriver);
-        driver.findElement(mailPart2).sendKeys("part2.com");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(isMail2Privileged), this.jsDriver);
+        this.getDriver().findElement(mailPart1).sendKeys("part1");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(ismail1Privileged), this.jsDriver);
+        this.getDriver().findElement(mailPart2).sendKeys("part2.com");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(isMail2Privileged), this.jsDriver);
     }
 }

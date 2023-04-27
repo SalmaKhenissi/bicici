@@ -3,9 +3,7 @@ package page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class TaskDetails {
-
-    protected WebDriver driver;
+public class TaskDetails extends AbstractPage {
 
     private By discardButton = By.xpath("//*[@title = 'Libérer la Tâche']");
     private By reassignButton = By.xpath("//*[@title = 'Réaffecter']");
@@ -14,7 +12,7 @@ public class TaskDetails {
     private By browseButton = By.xpath("//*[@title = 'Parcours']");
 
     public TaskDetails(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void discardTask() {
@@ -38,6 +36,6 @@ public class TaskDetails {
     }
 
     public void clickOnButton(By button) {
-        this.driver.findElement(button).click();
+        this.getDriver().findElement(button).click();
     }
 }

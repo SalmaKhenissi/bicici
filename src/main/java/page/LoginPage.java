@@ -3,22 +3,31 @@ package page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+public class LoginPage extends AbstractPage{
 
-    private WebDriver driver;
     private By usernameInput = By.id("username");
     private By passwordInput = By.id("password");
     private By loginButton = By.id("kc-login");
 
+    private By errorMsg = By.id("input-error");
+
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public ProspectListPage clickToLogin(String username, String password) {
-        driver.findElement(usernameInput).sendKeys(username);
-        driver.findElement(passwordInput).sendKeys(password);
-        driver.findElement(loginButton).click();
+        this.getDriver().findElement(usernameInput).sendKeys(username);
+        this.getDriver().findElement(passwordInput).sendKeys(password);
+        this.clickOnLoginButton();
 
-        return new ProspectListPage(driver);
+        return new ProspectListPage(this.getDriver());
+    }
+
+    public void clickOnLoginButton() {
+        this.getDriver().findElement(loginButton).click();
+    }
+
+    public boolean hasErrorMsg() {
+        return !this.getDriver().findElements(errorMsg).isEmpty();
     }
 }

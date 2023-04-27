@@ -18,12 +18,12 @@ public class ForeignAccountPage extends BaseNewProspectWizard  {
     }
 
     public void setForeignInfo() {
-        this.formIoUtil.clickOnRadioButton(driver.findElement(hasUSPhone), "false");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(hasAgentUSAddress), "false");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(hasUSCoveredAddress), "false");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(hasAgencyAddress), "false");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(hasUSEmbassyAddress), "false");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(hasUSGreenCard), "false");
-        this.formIoUtil.clickOnRadioButton(driver.findElement(hasUSBirthplace), "false");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasUSPhone), "false");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasAgentUSAddress), "false");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasUSCoveredAddress), "false");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasAgencyAddress), "false");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasUSEmbassyAddress), "false");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasUSGreenCard), "false");
+        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasUSBirthplace), "false");
     }
 }

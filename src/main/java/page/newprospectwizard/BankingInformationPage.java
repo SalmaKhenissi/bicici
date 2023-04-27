@@ -29,31 +29,31 @@ public class BankingInformationPage extends BaseNewProspectWizard {
         this.setNewAccountInfo();
         this.setProfileClient();
         this.setForecastFlows();
-        this.jsDriver.executeScript("arguments[0].click();", driver.findElement(this.nextButton));
+        this.jsDriver.executeScript("arguments[0].click();", this.getDriver().findElement(this.nextButton));
 
-        return new FlowsPage(driver);
+        return new FlowsPage(this.getDriver());
     }
 
     private void setBankingRelationInfo() throws InterruptedException {
-        driver.findElement(nationalId).sendKeys("11111111111");
-        this.formIoUtil.clickOnChoiceItem(driver, officeCode, "9563");
-        driver.findElement(comment).sendKeys("test comment");
+        this.getDriver().findElement(nationalId).sendKeys("11111111111");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), officeCode, "9563");
+        this.getDriver().findElement(comment).sendKeys("test comment");
     }
 
     private void setNewAccountInfo() throws InterruptedException {
-        this.formIoUtil.clickOnChoiceItem(driver, accountType, "compteOrdinaireAVue");
-        this.formIoUtil.clickOnChoiceItem(driver, accountCurrency, "FRANC CFA (BCEAO)");
-        this.formIoUtil.clickOnChoiceItem(driver, accountOpeningReason, "premier Compte Particulier");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), accountType, "compteOrdinaireAVue");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), accountCurrency, "FRANC CFA (BCEAO)");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), accountOpeningReason, "premier Compte Particulier");
     }
 
     private void setProfileClient() throws InterruptedException {
-        this.formIoUtil.clickOnChoiceItem(driver, profileClient, "CJ11");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), profileClient, "CJ11");
     }
 
     private void setForecastFlows() throws InterruptedException {
-        driver.findElement(forecastAmount).sendKeys("11111111111");
-        driver.findElement(fundsOrigin).sendKeys("11111111111");
-        this.formIoUtil.clickOnChoiceItem(driver, contributionCurrency, "ARGENT");
-        this.formIoUtil.clickOnChoiceItem(driver, depositType, "especes");
+        this.getDriver().findElement(forecastAmount).sendKeys("11111111111");
+        this.getDriver().findElement(fundsOrigin).sendKeys("11111111111");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), contributionCurrency, "ARGENT");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), depositType, "especes");
     }
 }

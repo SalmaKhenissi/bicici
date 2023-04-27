@@ -16,13 +16,13 @@ public class ActivityPage extends BaseNewProspectWizard {
 
     public BankingInformationPage saveActivityDetails() throws InterruptedException {
         Thread.sleep(5000);
-        this.formIoUtil.clickOnChoiceItem(driver, socioProfessionalCategory, "AGRICULTEURS EXPLOIT");
-        driver.findElement(activityDescription).sendKeys("test description");
-        this.formIoUtil.clickOnChoiceItem(driver, riskyActivity, "ACTIVITES LOBBYING");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), socioProfessionalCategory, "AGRICULTEURS EXPLOIT");
+        this.getDriver().findElement(activityDescription).sendKeys("test description");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), riskyActivity, "ACTIVITES LOBBYING");
         this.jsDriver.executeScript("window.scrollBy(0,350)", "");
-        this.formIoUtil.clickOnChoiceItem(driver, economicActivitySector, "AGRI-CHAS-SYLVI-PECH");
-        this.jsDriver.executeScript("arguments[0].click();", driver.findElement(this.nextButton));
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), economicActivitySector, "AGRI-CHAS-SYLVI-PECH");
+        this.jsDriver.executeScript("arguments[0].click();", this.getDriver().findElement(this.nextButton));
 
-        return new BankingInformationPage(driver);
+        return new BankingInformationPage(this.getDriver());
     }
 }

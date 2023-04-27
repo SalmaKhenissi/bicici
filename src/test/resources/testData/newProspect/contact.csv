@@ -1,0 +1,2 @@
+test case id;test case description;identityInput;vigilanceDate;presenceList;vigilanceComment;interrogationDate;detectionCip;incidentCenterComment
+BCC-73;vigilance - valid data;123456789;28/03/2023;outil indisponible;testcomment;28/03/2023;outil indisponible;testcomment

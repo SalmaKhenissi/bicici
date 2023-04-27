@@ -1,9 +1,17 @@
 package page.newprospectwizard;
 
+import org.openqa.selenium.WebElement;
+import utils.AssertUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
+
 public class VigilancePage extends BaseNewProspectWizard  {
+
+    private AssertUtils assertUtils;
+
+    private By cniElement = By.className("widget-details-item-value");
 
     private By vigilanceDate = By.name("data[date]");
     private By presenceList = By.className("formio-component-presence_list");
@@ -15,6 +23,7 @@ public class VigilancePage extends BaseNewProspectWizard  {
 
     public VigilancePage(WebDriver driver) {
         super(driver);
+        this.assertUtils = new AssertUtils();
     }
 
     public IdentificationPage saveVigilance() throws InterruptedException {
@@ -22,20 +31,26 @@ public class VigilancePage extends BaseNewProspectWizard  {
 
         this.setVigilance();
         this.setCentralIncident();
-        this.jsDriver.executeScript("arguments[0].click();", driver.findElement(this.nextButton));
+        this.jsDriver.executeScript("arguments[0].click();", this.getDriver().findElement(this.nextButton));
 
-        return new IdentificationPage(driver);
+        return new IdentificationPage(this.getDriver());
     }
 
     private void setVigilance() throws InterruptedException {
-        this.formIoUtil.setDateInput(driver.findElement(vigilanceDate),"28/03/2023");
-        this.formIoUtil.clickOnChoiceItem(this.driver, presenceList, "outil indisponible");
-        this.driver.findElement(vigilanceComment).sendKeys("test");
+        this.formIoUtil.setDateInput(this.getDriver().findElement(vigilanceDate),"28/03/2023");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), presenceList, "outil indisponible");
+        this.getDriver().findElement(vigilanceComment).sendKeys("test");
     }
 
     private void setCentralIncident() throws InterruptedException {
-        this.formIoUtil.setDateInput(driver.findElement(interrogationDate),"28/03/2023");
-        this.formIoUtil.clickOnChoiceItem(this.driver, detectionCip, "outil indisponible");
-        this.driver.findElement(incidentCenterComment).sendKeys("test");
+        this.formIoUtil.setDateInput(getDriver().findElement(interrogationDate),"28/03/2023");
+        this.formIoUtil.clickOnChoiceItem(this.getDriver(), detectionCip, "outil indisponible");
+        this.getDriver().findElement(incidentCenterComment).sendKeys("test");
+    }
+
+    public boolean isPageContainsCni() {
+        List<WebElement> elements = this .getDriver().findElements(cniElement);
+
+        return this.assertUtils.isElementsContainsProvidedText(elements, "123456789");
     }
 }

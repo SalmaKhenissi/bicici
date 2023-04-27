@@ -1,44 +1,60 @@
 package page;
 
-import org.openqa.selenium.JavascriptExecutor;
-import utils.FormIoUtil;
+import org.openqa.selenium.WebElement;
+import utils.AssertUtils;
+import utils.FormIoUtils;
 import page.newprospectwizard.VigilancePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
 
-public class InitiationPage {
+import java.util.List;
 
-    private WebDriver driver;
-    private JavascriptExecutor jsDriver;
-    private FormIoUtil formIoUtil;
+public class InitiationPage extends AbstractPage {
+
+    private FormIoUtils formIoUtil;
+    private AssertUtils assertUtils;
 
     private By officeCode = By.className("formio-component-user_identity_branch");
     private By operatorCode = By.className("formio-component-code_exploitant");
     private By identityOption = By.className("formio-component-dropDownOnHold");
     private By identityInput = By.name("data[numeroDeCni]");
+
     private By initiationButton = By.name("data[submit1]");
+    private By abandonButton = By.name("data[abandon]");
+    private By backButton = By.className("back-button");
 
     public InitiationPage(WebDriver driver) {
-        this.driver = driver;
-        this.formIoUtil = new FormIoUtil();
-        this.jsDriver = (JavascriptExecutor) driver;
+        super(driver);
+        this.formIoUtil = new FormIoUtils();
+        this.assertUtils = new AssertUtils();
     }
 
     public VigilancePage clickToInitiateProspect() throws InterruptedException {
         Thread.sleep(5000);
 
-        this.formIoUtil.clickOnChoiceOption(this.driver.findElement(officeCode), "06393");
-        this.formIoUtil.clickOnChoiceOption(this.driver.findElement(operatorCode), "CA59");
-        this.formIoUtil.searchAndSelect(this.driver.findElement(identityOption), "Numero de CNI");
-        this.driver.findElement(identityInput).sendKeys("123456789");
+        this.formIoUtil.clickOnChoiceOption(this.getDriver().findElement(officeCode), "06393");
+        this.formIoUtil.clickOnChoiceOption(this.getDriver().findElement(operatorCode), "CA59");
+        this.formIoUtil.searchAndSelect(this.getDriver().findElement(identityOption), "Numero de CNI");
+        this.getDriver().findElement(identityInput).sendKeys("123456789");
 
-        WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.elementToBeClickable(initiationButton));
-        driver.findElement(initiationButton).click();
+        this.getWait().until(ExpectedConditions.elementToBeClickable(initiationButton));
+        this.getDriver().findElement(initiationButton).click();
 
-        return new VigilancePage(this.driver);
+        Thread.sleep(5000);
+
+        return new VigilancePage(this.getDriver());
+    }
+
+    public void clickOnInitiationButton() {
+        this.getDriver().findElement(initiationButton).click();
+    }
+
+    public void clickOnAbandonButton() {
+        this.getDriver().findElement(abandonButton).click();
+    }
+
+    public void clickOnBackButton() {
+        this.getDriver().findElement(backButton).click();
     }
 }

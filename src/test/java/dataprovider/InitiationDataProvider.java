@@ -1,5 +1,6 @@
 package dataprovider;
 
+import com.opencsv.exceptions.CsvException;
 import com.opencsv.exceptions.CsvValidationException;
 import org.testng.annotations.DataProvider;
 import utils.DataProviderUtils;
@@ -14,9 +15,9 @@ public class InitiationDataProvider {
         this.utils = new DataProviderUtils();
     }
 
-    @DataProvider(name = "initiation-provider")
-    public Object[][] initiationData() throws CsvValidationException, IOException {
+    @DataProvider(name = "initiationProvider")
+    public Object[][] initiationData() throws CsvException, IOException {
 
-        return this.utils.readCSVData("src/test/resources/testdata/login.csv");
+        return this.utils.readCSVData("src/test/resources/testData/prospect.csv");
     }
 }

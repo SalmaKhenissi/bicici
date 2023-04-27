@@ -1,7 +1,7 @@
 package page.newprospectwizard;
 
+import utils.FormIoUtils;
 import page.TaskDetails;
-import utils.FormIoUtil;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 public class BaseNewProspectWizard extends TaskDetails {
 
     protected JavascriptExecutor jsDriver ;
-    protected FormIoUtil formIoUtil;
+    protected FormIoUtils formIoUtil;
 
     protected By nextButton = By.className("btn-wizard-nav-next");
     protected By previousButton = By.className("btn-wizard-nav-previous");
@@ -19,7 +19,7 @@ public class BaseNewProspectWizard extends TaskDetails {
     public BaseNewProspectWizard(WebDriver driver) {
         super(driver);
         this.jsDriver = (JavascriptExecutor) driver;
-        this.formIoUtil = new FormIoUtil();
+        this.formIoUtil = new FormIoUtils();
     }
 
     public void getNextStep() {
@@ -39,6 +39,6 @@ public class BaseNewProspectWizard extends TaskDetails {
     }
 
     public void clickOnButton(By button) {
-        this.jsDriver.executeScript("arguments[0].click();", super.driver.findElement(button));
+        this.jsDriver.executeScript("arguments[0].click();", this.getDriver().findElement(button));
     }
 }
