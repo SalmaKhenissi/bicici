@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
-import page.LoginPage;
-
 import java.time.Duration;
 
 public class BaseTest {
@@ -27,20 +25,9 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-//    @BeforeMethod
-//    public void beforeMethod(String username, String password)
-//    {
-//        LoginPage loginPage = new LoginPage(driver);
-//        loginPage.clickToLogin(username, password);
-//    }
-
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 
-    @AfterSuite
-    public void ClearBrowserCache() {
-//        driver.manage().deleteAllCookies();
-    }
 }

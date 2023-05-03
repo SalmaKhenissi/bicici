@@ -1,4 +1,4 @@
-package page.newprospectwizard;
+package page.newProspectWizard;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -36,24 +36,24 @@ public class BankingInformationPage extends BaseNewProspectWizard {
 
     private void setBankingRelationInfo() throws InterruptedException {
         this.getDriver().findElement(nationalId).sendKeys("11111111111");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), officeCode, "9563");
+        this.formIoUtil.searchAndSelect(officeCode, "9563 - BOUAKE");
         this.getDriver().findElement(comment).sendKeys("test comment");
     }
 
     private void setNewAccountInfo() throws InterruptedException {
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), accountType, "compteOrdinaireAVue");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), accountCurrency, "FRANC CFA (BCEAO)");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), accountOpeningReason, "premier Compte Particulier");
+        this.formIoUtil.clickOnChoiceItem(accountType, "compteOrdinaireAVue");
+        this.formIoUtil.searchAndSelect(accountCurrency, "FRANC CFA (BCEAO)");
+        this.formIoUtil.searchAndSelect(accountOpeningReason, "Premier Compte de Particulier");
     }
 
     private void setProfileClient() throws InterruptedException {
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), profileClient, "CJ11");
+        this.formIoUtil.searchAndSelect(profileClient, "GRANDES ENTREPRISES GE");
     }
 
     private void setForecastFlows() throws InterruptedException {
         this.getDriver().findElement(forecastAmount).sendKeys("11111111111");
         this.getDriver().findElement(fundsOrigin).sendKeys("11111111111");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), contributionCurrency, "ARGENT");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), depositType, "especes");
+        this.formIoUtil.searchAndSelect(contributionCurrency, "ARGENT");
+        this.formIoUtil.searchAndSelect(depositType, "ESPECES");
     }
 }

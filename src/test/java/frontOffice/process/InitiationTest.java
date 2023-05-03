@@ -1,19 +1,12 @@
 package frontOffice.process;
 
-import dataprovider.InitiationDataProvider;
 import dataprovider.LoginDataProvider;
 import org.testng.Assert;
-import page.InitiationPage;
 import page.LoginPage;
 import page.ProspectListPage;
-import page.newprospectwizard.*;
 import base.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-import java.time.Duration;
+
 import java.util.Map;
 
 public class InitiationTest extends BaseTest {

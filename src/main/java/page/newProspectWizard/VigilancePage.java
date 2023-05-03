@@ -1,10 +1,9 @@
-package page.newprospectwizard;
+package page.newProspectWizard;
 
 import org.openqa.selenium.WebElement;
 import utils.AssertUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import java.util.List;
 
 public class VigilancePage extends BaseNewProspectWizard  {
@@ -37,15 +36,15 @@ public class VigilancePage extends BaseNewProspectWizard  {
     }
 
     private void setVigilance() throws InterruptedException {
-        this.formIoUtil.setDateInput(this.getDriver().findElement(vigilanceDate),"28/03/2023");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), presenceList, "outil indisponible");
-        this.getDriver().findElement(vigilanceComment).sendKeys("test");
+        this.dateUtils.setDateInput(vigilanceDate,"28/03/2023");
+        this.formIoUtil.searchAndSelect(presenceList, "outil indisponible");
+        this.getDriver().findElement(vigilanceComment).sendKeys("test comment");
     }
 
     private void setCentralIncident() throws InterruptedException {
-        this.formIoUtil.setDateInput(getDriver().findElement(interrogationDate),"28/03/2023");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), detectionCip, "outil indisponible");
-        this.getDriver().findElement(incidentCenterComment).sendKeys("test");
+        this.dateUtils.setDateInput(interrogationDate,"28/03/2023");
+        this.formIoUtil.searchAndSelect(detectionCip, "outil indisponible");
+        this.getDriver().findElement(incidentCenterComment).sendKeys("test comment");
     }
 
     public boolean isPageContainsCni() {

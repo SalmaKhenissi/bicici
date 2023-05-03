@@ -18,6 +18,6 @@ public class InitiationDataProvider {
     @DataProvider(name = "initiationProvider")
     public Object[][] initiationData() throws CsvException, IOException {
 
-        return this.utils.readCSVData("src/test/resources/testData/prospect.csv");
+        return this.utils.readCSVData("src/test/resources/testData/newProspect/prospect.csv");
     }
 }

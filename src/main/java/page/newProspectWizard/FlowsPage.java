@@ -1,4 +1,4 @@
-package page.newprospectwizard;
+package page.newProspectWizard;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,10 +17,10 @@ public class FlowsPage extends BaseNewProspectWizard {
 
     public ForeignAccountPage saveAnnualRevenuesOrigin() throws InterruptedException {
         this.getDriver().findElement(revenuesYear).sendKeys("2020");
-        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(revenuesSources), "pension_retraite");
+        this.formIoUtil.clickOnRadioButton(revenuesSources, "pension_retraite");
         this.getDriver().findElement(revenuesOrigins).sendKeys("test origin");
         this.getDriver().findElement(annualRevenues).sendKeys("1000");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), revenuesCurrency, "ARGENT");
+        this.formIoUtil.searchAndSelect(revenuesCurrency, "ARGENT");
         this.jsDriver.executeScript("arguments[0].click();", this.getDriver().findElement(this.nextButton));
 
         return new ForeignAccountPage(this.getDriver());

@@ -1,5 +1,6 @@
-package page.newprospectwizard;
+package page.newProspectWizard;
 
+import utils.DateUtils;
 import utils.FormIoUtils;
 import page.TaskDetails;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,6 +11,7 @@ public class BaseNewProspectWizard extends TaskDetails {
 
     protected JavascriptExecutor jsDriver ;
     protected FormIoUtils formIoUtil;
+    protected DateUtils dateUtils;
 
     protected By nextButton = By.className("btn-wizard-nav-next");
     protected By previousButton = By.className("btn-wizard-nav-previous");
@@ -19,7 +21,8 @@ public class BaseNewProspectWizard extends TaskDetails {
     public BaseNewProspectWizard(WebDriver driver) {
         super(driver);
         this.jsDriver = (JavascriptExecutor) driver;
-        this.formIoUtil = new FormIoUtils();
+        this.formIoUtil = new FormIoUtils(driver);
+        this.dateUtils = new DateUtils(driver);
     }
 
     public void getNextStep() {

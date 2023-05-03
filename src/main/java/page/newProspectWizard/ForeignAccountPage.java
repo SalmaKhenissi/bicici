@@ -1,4 +1,4 @@
-package page.newprospectwizard;
+package page.newProspectWizard;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,13 +17,18 @@ public class ForeignAccountPage extends BaseNewProspectWizard  {
         super(driver);
     }
 
-    public void setForeignInfo() {
-        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasUSPhone), "false");
-        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasAgentUSAddress), "false");
-        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasUSCoveredAddress), "false");
-        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasAgencyAddress), "false");
-        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasUSEmbassyAddress), "false");
-        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasUSGreenCard), "false");
-        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(hasUSBirthplace), "false");
+    public void saveForeignInfo() throws InterruptedException {
+        this.formIoUtil.clickOnRadioButton(hasUSPhone, "false");
+        Thread.sleep(2000);
+        this.formIoUtil.clickOnRadioButton(hasAgentUSAddress, "false");
+        Thread.sleep(2000);
+        this.formIoUtil.clickOnRadioButton(hasUSCoveredAddress, "false");
+        Thread.sleep(2000);
+        this.formIoUtil.clickOnRadioButton(hasAgencyAddress, "false");
+        this.formIoUtil.clickOnRadioButton(hasUSEmbassyAddress, "false");
+        this.formIoUtil.clickOnRadioButton(hasUSGreenCard, "false");
+        this.formIoUtil.clickOnRadioButton(hasUSBirthplace, "false");
+
+        this.save();
     }
 }

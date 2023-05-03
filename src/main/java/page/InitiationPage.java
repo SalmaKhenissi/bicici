@@ -1,14 +1,11 @@
 package page;
 
-import org.openqa.selenium.WebElement;
 import utils.AssertUtils;
 import utils.FormIoUtils;
-import page.newprospectwizard.VigilancePage;
+import page.newProspectWizard.VigilancePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.List;
 
 public class InitiationPage extends AbstractPage {
 
@@ -26,20 +23,21 @@ public class InitiationPage extends AbstractPage {
 
     public InitiationPage(WebDriver driver) {
         super(driver);
-        this.formIoUtil = new FormIoUtils();
+        this.formIoUtil = new FormIoUtils(driver);
         this.assertUtils = new AssertUtils();
     }
 
     public VigilancePage clickToInitiateProspect() throws InterruptedException {
         Thread.sleep(5000);
 
-        this.formIoUtil.clickOnChoiceOption(this.getDriver().findElement(officeCode), "06393");
-        this.formIoUtil.clickOnChoiceOption(this.getDriver().findElement(operatorCode), "CA59");
-        this.formIoUtil.searchAndSelect(this.getDriver().findElement(identityOption), "Numero de CNI");
+        this.formIoUtil.clickOnChoiceItem(officeCode, "06393");
+        Thread.sleep(1000);
+        this.formIoUtil.clickOnChoiceItem(operatorCode, "CA59");
+        this.formIoUtil.searchAndSelect(identityOption, "Numero de CNI");
         this.getDriver().findElement(identityInput).sendKeys("123456789");
 
         this.getWait().until(ExpectedConditions.elementToBeClickable(initiationButton));
-        this.getDriver().findElement(initiationButton).click();
+        this.clickOnInitiationButton();
 
         Thread.sleep(5000);
 

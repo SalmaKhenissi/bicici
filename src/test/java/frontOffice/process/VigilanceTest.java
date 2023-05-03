@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.LoginPage;
 import page.ProspectListPage;
-import page.newprospectwizard.VigilancePage;
+import page.newProspectWizard.VigilancePage;
 
 public class VigilanceTest extends BaseTest {
 

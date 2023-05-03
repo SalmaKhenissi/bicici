@@ -1,9 +1,11 @@
-package page.newprospectwizard;
+package page.newProspectWizard;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class IdentificationPage extends BaseNewProspectWizard {
+
+    private final String SCROLL_ARG = "window.scrollBy(0,350)";
 
     private By clientCategory = By.className("formio-component-categorie_client");
 
@@ -52,19 +54,19 @@ public class IdentificationPage extends BaseNewProspectWizard {
 
     public ContactDetailsPage saveIdentification() throws InterruptedException {
         this.setClientCategory();
-        this.jsDriver.executeScript("window.scrollBy(0,350)", "");
+        this.jsDriver.executeScript(SCROLL_ARG);
         this.setCivilStatus();
-        this.jsDriver.executeScript("window.scrollBy(0,350)", "");
+        this.jsDriver.executeScript(SCROLL_ARG);
         this.setOriginInfo();
-        this.jsDriver.executeScript("window.scrollBy(0,350)", "");
+        this.jsDriver.executeScript(SCROLL_ARG);
         this.setBirthInfo();
-        this.jsDriver.executeScript("window.scrollBy(0,350)", "");
+        this.jsDriver.executeScript(SCROLL_ARG);
         this.setFamilyStatus();
-        this.jsDriver.executeScript("window.scrollBy(0,350)", "");
+        this.jsDriver.executeScript(SCROLL_ARG);
         this.setInChargeInfo();
-        this.jsDriver.executeScript("window.scrollBy(0,350)", "");
+        this.jsDriver.executeScript(SCROLL_ARG);
         this.setLegalCapacity();
-        this.jsDriver.executeScript("window.scrollBy(0,350)", "");
+        this.jsDriver.executeScript(SCROLL_ARG);
         this.setCreditInfo();
         this.jsDriver.executeScript("arguments[0].click();", this.getDriver().findElement(this.nextButton));
 
@@ -72,35 +74,35 @@ public class IdentificationPage extends BaseNewProspectWizard {
     }
 
     private void setClientCategory() throws InterruptedException {
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), clientCategory,"110");
+        this.formIoUtil.searchAndSelect(clientCategory,"TRESOR PUBLIC");
     }
 
     private void setCivilStatus() throws InterruptedException  {
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), civility, "monsieur");
-        this.formIoUtil.searchAndSelect(this.getDriver().findElement(nationalityCountry), "Tunisie");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), gender, "MALE");
-        this.formIoUtil.searchAndSelect(this.getDriver().findElement(doubleNationalityCountry), "BRESIL");
+        this.formIoUtil.clickOnChoiceItem(civility, "monsieur");
+        this.formIoUtil.searchAndSelect(nationalityCountry, "Tunisie");
+        this.formIoUtil.clickOnChoiceItem(gender, "MALE");
+        this.formIoUtil.searchAndSelect(doubleNationalityCountry, "BRESIL");
         this.getDriver().findElement(lastName).sendKeys("lastname");
         this.getDriver().findElement(firstName).sendKeys("firstName");
-        this.formIoUtil.searchAndSelect(this.getDriver().findElement(matriculationCountry), "Tunisie");
-        this.formIoUtil.clickOnRadioButton(this.getDriver().findElement(isResident), "false" , this.jsDriver);
+        this.formIoUtil.searchAndSelect(matriculationCountry, "Tunisie");
+        this.formIoUtil.clickOnRadioButton(isResident, "true");
     }
 
     private void setOriginInfo() throws InterruptedException {
-        this.formIoUtil.searchAndSelect(this.getDriver().findElement(KYCCountry), "Tunisie");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), EERMotif, "SPONTANEE");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), EERMode, "AGENCE");
+        this.formIoUtil.searchAndSelect(KYCCountry, "Tunisie");
+        this.formIoUtil.searchAndSelect(EERMotif, "SPONTANEE");
+        this.formIoUtil.searchAndSelect(EERMode, "AGENCE");
     }
 
     private void setBirthInfo() throws InterruptedException {
-//        this.formIoUtil.setDateInput(this.getDriver().findElement(birthdate),"28/03/2023");
+        this.dateUtils.selectDate(birthdate,"28/03/2004");
         this.getDriver().findElement(motherName).sendKeys("mère");
         this.getDriver().findElement(birthPlace).sendKeys("birthplace");
-        this.formIoUtil.searchAndSelect(this.getDriver().findElement(birthCountry), "Tunisie");
+        this.formIoUtil.searchAndSelect(birthCountry, "Tunisie");
     }
 
     private void setFamilyStatus() throws InterruptedException {
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), familyStatus, "CELIBATAIRE");
+        this.formIoUtil.clickOnChoiceItem(familyStatus, "CELIBATAIRE");
     }
 
     private void setInChargeInfo() {
@@ -109,13 +111,13 @@ public class IdentificationPage extends BaseNewProspectWizard {
     }
 
     private void setLegalCapacity() {
-        this.formIoUtil.clickOnSelectOption(this.getDriver().findElement(legalCapacityType), "Majeur incapable");
+        this.formIoUtil.clickOnSelectOption(legalCapacityType, "Majeur incapable");
 //        this.formIoUtil.setDateInput(this.getDriver().findElement(legalCapacityDate),"28/03/2023");
     }
 
     private void setCreditInfo() {
-        this.formIoUtil.clickOnSelectOption(this.getDriver().findElement(creditConsent), "accordClient");
-        this.formIoUtil.setDateInput(this.getDriver().findElement(collectionDate),"28/03/2023");
+        this.formIoUtil.clickOnSelectOption(creditConsent, "accordClient");
+        this.dateUtils.setDateInput(collectionDate,"28/03/2023");
         this.getDriver().findElement(taxpayerAccount).sendKeys("123");
     }
 }

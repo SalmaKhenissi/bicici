@@ -1,4 +1,4 @@
-package page.newprospectwizard;
+package page.newProspectWizard;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,11 +16,11 @@ public class ActivityPage extends BaseNewProspectWizard {
 
     public BankingInformationPage saveActivityDetails() throws InterruptedException {
         Thread.sleep(5000);
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), socioProfessionalCategory, "AGRICULTEURS EXPLOIT");
+        this.formIoUtil.searchAndSelect(socioProfessionalCategory, "AGRICULTEURS EXPLOIT");
         this.getDriver().findElement(activityDescription).sendKeys("test description");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), riskyActivity, "ACTIVITES LOBBYING");
+        this.formIoUtil.searchAndSelect(riskyActivity, "ACTIVITES LOBBYING");
         this.jsDriver.executeScript("window.scrollBy(0,350)", "");
-        this.formIoUtil.clickOnChoiceItem(this.getDriver(), economicActivitySector, "AGRI-CHAS-SYLVI-PECH");
+        this.formIoUtil.searchAndSelect(economicActivitySector, "AGRI-CHAS-SYLVI-PECH");
         this.jsDriver.executeScript("arguments[0].click();", this.getDriver().findElement(this.nextButton));
 
         return new BankingInformationPage(this.getDriver());
