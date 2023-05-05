@@ -13,13 +13,17 @@ import java.util.Map;
 
 public class ProcessTest extends BaseTest {
 
-    @Test(testName = "BCC-processTest", dataProviderClass = InitiationDataProvider.class, dataProvider = "initiationProvider")
-    public void testInitiation(Map<String, String> loginData) throws InterruptedException {
+    @Test(
+            testName = "BCC-processTest",
+            dataProviderClass = InitiationDataProvider.class,
+            dataProvider = "initiationProvider"
+    )
+    public void testInitiation(Map<String, String> testData) throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
 
         ProspectListPage prospectListPage = loginPage.clickToLogin(
-                loginData.get("username"),
-                loginData.get("password")
+                testData.get("username"),
+                testData.get("password")
         );
         WebDriverWait wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("topbar-menu-button")));
@@ -32,7 +36,8 @@ public class ProcessTest extends BaseTest {
                 .saveActivityDetails()
                 .saveBankingInfo()
                 .saveAnnualRevenuesOrigin()
-                .saveForeignInfo();
+                .saveForeignInfo()
+                .saveProspect();
     }
 
 }

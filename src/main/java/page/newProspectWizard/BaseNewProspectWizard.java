@@ -3,9 +3,11 @@ package page.newProspectWizard;
 import utils.DateUtils;
 import utils.FormIoUtils;
 import page.TaskDetails;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import java.util.List;
 
 public class BaseNewProspectWizard extends TaskDetails {
 
@@ -17,6 +19,8 @@ public class BaseNewProspectWizard extends TaskDetails {
     protected By previousButton = By.className("btn-wizard-nav-previous");
     protected By cancelButton = By.className("btn-wizard-nav-cancel");
     protected By submitButton = By.className("btn-wizard-nav-submit");
+
+    protected By modalLocator = By.className("custom-modal");
 
     public BaseNewProspectWizard(WebDriver driver) {
         super(driver);
@@ -43,5 +47,23 @@ public class BaseNewProspectWizard extends TaskDetails {
 
     public void clickOnButton(By button) {
         this.jsDriver.executeScript("arguments[0].click();", this.getDriver().findElement(button));
+    }
+
+    public void saveProspect() {
+        WebElement modal;
+        if((modal = this.getOpenedModal()) != null) {
+            modal.findElement(By.tagName("button")).click();
+        }
+    }
+
+    private WebElement getOpenedModal() {
+        List<WebElement> modals = this.getDriver().findElements(modalLocator);
+        for (WebElement modal : modals) {
+            if (modal.getAttribute("style").contains("z-index")) {
+                return modal;
+            }
+        }
+
+        return null;
     }
 }

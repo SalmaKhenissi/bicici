@@ -26,11 +26,11 @@ public class FormIoUtils {
         WebElement selectElement = element.findElement(By.className("form-control"));
         this.jsDriver.executeScript(SCROLL_ARG, selectElement);
         selectElement.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         WebElement optionElement = element.findElement(By.className("choices__list"))
                 .findElement(By.xpath("//*[@data-value = '"+item+"']"));
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         this.jsDriver.executeScript(SCROLL_ARG, optionElement);
         optionElement.click();
@@ -49,13 +49,15 @@ public class FormIoUtils {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(selectElement));
         selectElement.click();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
 
         element.findElement(By.tagName("input")).sendKeys(value);
         Thread.sleep(1000);
 
         WebElement optionElement = element.findElement(By.xpath("div[1]/div[2]/div[1]/div[1]"));
         this.jsDriver.executeScript(SCROLL_ARG, optionElement);
+        Thread.sleep(1000);
+
         optionElement.click();
         Thread.sleep(1000);
     }

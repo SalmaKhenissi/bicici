@@ -17,7 +17,7 @@ public class ForeignAccountPage extends BaseNewProspectWizard  {
         super(driver);
     }
 
-    public void saveForeignInfo() throws InterruptedException {
+    public ForeignAccountPage saveForeignInfo() throws InterruptedException {
         this.formIoUtil.clickOnRadioButton(hasUSPhone, "false");
         Thread.sleep(2000);
         this.formIoUtil.clickOnRadioButton(hasAgentUSAddress, "false");
@@ -30,5 +30,7 @@ public class ForeignAccountPage extends BaseNewProspectWizard  {
         this.formIoUtil.clickOnRadioButton(hasUSBirthplace, "false");
 
         this.save();
+
+        return this;
     }
 }
